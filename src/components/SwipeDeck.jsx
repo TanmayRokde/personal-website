@@ -8,6 +8,10 @@ const SwipeDeck = ({ cards, onExhausted }) => {
     [cards],
   )
   const [deck, setDeck] = useState(initialCards)
+  const [swipeThreshold, setSwipeThreshold] = useState(() => {
+    if (typeof window === 'undefined') return 80
+    return window.innerWidth < 640 ? 45 : 80
+  })
 
   useEffect(() => {
     setDeck(initialCards)
@@ -24,16 +28,32 @@ const SwipeDeck = ({ cards, onExhausted }) => {
     return undefined
   }, [deck, initialCards, onExhausted])
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+    const updateThreshold = () => {
+      setSwipeThreshold(window.innerWidth < 640 ? 45 : 80)
+    }
+    updateThreshold()
+    window.addEventListener('resize', updateThreshold)
+    return () => window.removeEventListener('resize', updateThreshold)
+  }, [])
+
   return (
     <div className="relative grid h-[320px] w-full place-items-center overflow-visible sm:h-[340px] md:h-[360px]">
       {deck.map((card) => (
-        <DeckCard key={card.id} {...card} cards={deck} setDeck={setDeck} />
+        <DeckCard
+          key={card.id}
+          {...card}
+          cards={deck}
+          setDeck={setDeck}
+          swipeThreshold={swipeThreshold}
+        />
       ))}
     </div>
   )
 }
 
-const DeckCard = ({ id, title, headline, body, cards, setDeck }) => {
+const DeckCard = ({ id, title, headline, body, cards, setDeck, swipeThreshold }) => {
   const x = useMotionValue(0)
 
   const rotateRaw = useTransform(x, [-120, 120], [-14, 14])
@@ -51,7 +71,7 @@ const DeckCard = ({ id, title, headline, body, cards, setDeck }) => {
   })
 
   const handleDragEnd = () => {
-    if (Math.abs(x.get()) > 80) {
+    if (Math.abs(x.get()) > swipeThreshold) {
       setDeck((prev) => prev.filter((card) => card.id !== id))
     }
   }
@@ -73,8 +93,8 @@ const DeckCard = ({ id, title, headline, body, cards, setDeck }) => {
         }}
         animate={{ scale: isFront ? 1 : 0.97 }}
         drag={isFront ? 'x' : false}
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.25}
+        dragConstraints={{ left: -160, right: 160 }}
+        dragElastic={0.35}
         onDragEnd={handleDragEnd}
       >
         <div className="space-y-2">
@@ -126,6 +146,7 @@ DeckCard.propTypes = {
     PropTypes.shape({ id: PropTypes.string.isRequired }),
   ).isRequired,
   setDeck: PropTypes.func.isRequired,
+  swipeThreshold: PropTypes.number.isRequired,
 }
 
 SwipeDeck.defaultProps = {
