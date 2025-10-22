@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaArrowDownLong } from 'react-icons/fa6'
 import SwipeDeck from './SwipeDeck'
-import PyramidPatternShaders from './ui/pyramid-pattern-shaders'
 
 const deckContent = [
   {
@@ -174,18 +173,10 @@ const Projects = () => {
 
   return (
     <section className="relative overflow-hidden bg-gray-950 pb-28 pt-24 text-white">
-      <div className="absolute inset-0 -z-10">
-        <PyramidPatternShaders
-          speed={0.08}
-          scale={0.9}
-          offsetRows={1}
-          bumpStrength={0.28}
-          hatchIntensity={0.2}
-          lightMovement={0.08}
-          className="h-full w-full opacity-90"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-gray-950/18 via-gray-950/48 to-gray-950/80" />
-      </div>
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-cyan-500/10 via-gray-950/90 to-gray-950"
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto max-w-6xl px-6 sm:px-10 lg:px-12">
         <motion.div

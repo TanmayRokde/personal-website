@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
-import PyramidPatternShaders from "./ui/pyramid-pattern-shaders";
 
 const contactMethods = [
   {
@@ -104,18 +103,10 @@ const digitalCards = [
 const Contacts = () => {
   return (
     <section className="relative overflow-hidden bg-gray-950 pb-28 pt-32 text-white">
-      <div className="absolute inset-0 -z-10">
-        <PyramidPatternShaders
-          speed={0.1}
-          scale={0.85}
-          offsetRows={1}
-          bumpStrength={0.3}
-          hatchIntensity={0.2}
-          lightMovement={0.1}
-          className="h-full w-full opacity-95"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-gray-950/15 via-gray-950/25 to-gray-950/45" />
-      </div>
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-cyan-500/10 via-gray-950 to-gray-950"
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto flex max-w-5xl flex-col gap-12 px-6 text-center sm:px-10">
         <div className="space-y-4">
