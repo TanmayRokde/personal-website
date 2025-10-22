@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaLinkedin } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { motion } from 'framer-motion'
@@ -98,6 +98,10 @@ const glowPulse = {
 }
 
 const TechStack = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [])
+
   return (
     <section className="relative isolate overflow-hidden px-6 py-20 sm:px-10 lg:px-12">
       <motion.div
@@ -189,7 +193,7 @@ const TechStack = () => {
             custom={4}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.2, margin: '-40px 0px -40px 0px' }}
           >
             <motion.div
               className="absolute inset-x-8 top-8 h-20 rounded-full bg-cyan-400/25 blur-3xl"
@@ -223,7 +227,7 @@ const TechStack = () => {
           className="grid gap-6 md:grid-cols-2"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.18, margin: '-30px 0px -30px 0px' }}
         >
           {profileHighlights.map((item, index) => (
             <motion.div
@@ -241,7 +245,7 @@ const TechStack = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.18, margin: '-30px 0px -30px 0px' }}
         >
           <motion.h2
             className="text-2xl font-semibold text-white sm:text-3xl"
@@ -262,7 +266,7 @@ const TechStack = () => {
             className="mt-10 grid gap-6 md:grid-cols-2"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.15, margin: '-30px 0px -30px 0px' }}
           >
             {techCategories.map((group, index) => (
               <motion.div
@@ -295,7 +299,7 @@ const TechStack = () => {
           className="rounded-3xl border border-white/10 bg-white/[0.03] p-10 shadow-[0_0_65px_rgba(14,165,233,0.25)] backdrop-blur"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2, margin: '-40px 0px -40px 0px' }}
           variants={sectionVariants}
         >
           <motion.h2
@@ -309,7 +313,7 @@ const TechStack = () => {
             className="mt-6 grid gap-4 md:grid-cols-2"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.18, margin: '-30px 0px -30px 0px' }}
           >
             {currentFocus.map((focus, index) => (
               <motion.div

@@ -25,7 +25,7 @@ const SwipeDeck = ({ cards, onExhausted }) => {
   }, [deck, initialCards, onExhausted])
 
   return (
-    <div className="relative grid h-[360px] w-full place-items-center overflow-visible">
+    <div className="relative grid h-[320px] w-full place-items-center overflow-visible sm:h-[340px] md:h-[360px]">
       {deck.map((card) => (
         <DeckCard key={card.id} {...card} cards={deck} setDeck={setDeck} />
       ))}
@@ -58,7 +58,7 @@ const DeckCard = ({ id, title, headline, body, cards, setDeck }) => {
 
   return (
     <motion.article
-      className="relative h-[18.5rem] w-[20rem]"
+      className="relative mx-auto h-[18rem] w-[16.5rem] sm:h-[18.5rem] sm:w-[18rem] md:w-[19.5rem]"
       style={{ gridRow: 1, gridColumn: 1 }}
     >
       <motion.div

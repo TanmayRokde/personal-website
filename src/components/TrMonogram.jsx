@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import profileImage from '../assets/me.png'
 
@@ -6,7 +7,7 @@ const TR_DRAW_DURATION = 6000
 const PAUSE_AFTER_DRAW = 3000
 const IMAGE_DISPLAY_DURATION = 6500
 
-const TrMonogram = () => {
+const TrMonogram = ({ className }) => {
   const [showBack, setShowBack] = useState(false)
   const [showFlicker, setShowFlicker] = useState(true)
 
@@ -27,7 +28,7 @@ const TrMonogram = () => {
   }, [showBack])
 
   return (
-    <div className="relative w-full max-w-md">
+    <div className={clsx('relative w-full max-w-md', className)}>
       <div
         className="absolute -inset-5 rounded-[46px] bg-cyan-500/20 opacity-80 blur-3xl"
         aria-hidden="true"
@@ -88,6 +89,14 @@ const TrMonogram = () => {
       />
     </div>
   )
+}
+
+TrMonogram.propTypes = {
+  className: PropTypes.string,
+}
+
+TrMonogram.defaultProps = {
+  className: undefined,
 }
 
 export default TrMonogram

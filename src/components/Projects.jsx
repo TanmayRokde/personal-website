@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { FaArrowDownLong } from 'react-icons/fa6'
 import SwipeDeck from './SwipeDeck'
+import PyramidPatternShaders from './ui/pyramid-pattern-shaders'
 
 const deckContent = [
   {
@@ -166,20 +168,53 @@ const deckContent = [
 ]
 
 const Projects = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [])
+
   return (
     <section className="relative overflow-hidden bg-gray-950 pb-28 pt-24 text-white">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-70"
-        aria-hidden="true"
-      >
-        <div className="absolute -left-40 top-0 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-3xl" />
-        <div className="absolute right-[-180px] top-40 h-[640px] w-[640px] rounded-full bg-sky-400/10 blur-[180px]" />
-        <div className="absolute bottom-[-120px] left-[20%] h-[520px] w-[520px] rounded-full bg-emerald-500/10 blur-[160px]" />
+      <div className="absolute inset-0 -z-10">
+        <PyramidPatternShaders
+          speed={0.08}
+          scale={0.9}
+          offsetRows={1}
+          bumpStrength={0.28}
+          hatchIntensity={0.2}
+          lightMovement={0.08}
+          className="h-full w-full opacity-90"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-gray-950/18 via-gray-950/48 to-gray-950/80" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 sm:px-10 lg:px-12">
         <motion.div
-          className="max-w-3xl"
+          className="pointer-events-none absolute right-2 top-4 hidden h-28 w-28 -translate-y-1/2 translate-x-6 items-center justify-center md:right-6 md:top-6 md:h-32 md:w-32 lg:flex"
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+        >
+          <div className="relative flex h-full w-full items-center justify-center">
+            <div className="absolute inset-0 rounded-full border-2 border-dotted border-cyan-300/70" />
+            <motion.div
+              className="flex flex-col items-center gap-1 text-[0.65rem] uppercase tracking-[0.5em] text-cyan-100/80"
+              animate={{ rotate: [0, -360] }}
+              transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+            >
+              <span>Scroll</span>
+              <motion.span
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                className="text-cyan-100"
+              >
+                <FaArrowDownLong />
+              </motion.span>
+              <span>Down</span>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="max-w-3xl text-center md:text-left"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -197,20 +232,32 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="mt-20 grid gap-16 xl:grid-cols-2">
-          {deckContent.map((deck, index) => (
-            <motion.div
-              key={deck.id}
-              className="relative flex h-full flex-col justify-between gap-10 rounded-[42px] border border-white/5 bg-white/[0.02] p-8 backdrop-blur-2xl"
-              initial={{ opacity: 0, y: 60, scale: 0.98 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.08 }}
-            >
-              <div className="relative space-y-5">
-                <p className="text-xs uppercase tracking-[0.45em] text-cyan-200/70">
-                  {deck.subtitle}
-                </p>
+        <div className="mt-16 grid gap-12 lg:grid-cols-2">
+          {deckContent.map((deck, index) => {
+            const animationProps =
+              index < 2
+                ? {
+                    initial: { opacity: 0, y: 40, scale: 0.96 },
+                    animate: { opacity: 1, y: 0, scale: 1 },
+                    transition: { duration: 0.6, ease: 'easeOut', delay: index * 0.05 },
+                  }
+                : {
+                    initial: { opacity: 0, y: 60, scale: 0.98 },
+                    whileInView: { opacity: 1, y: 0, scale: 1 },
+                    viewport: { once: true, amount: 0.18, margin: '-20px 0px -60px 0px' },
+                    transition: { duration: 0.6, ease: 'easeOut', delay: index * 0.05 },
+                  }
+
+            return (
+              <motion.div
+                key={deck.id}
+                className="relative flex h-full flex-col justify-between gap-8 rounded-[36px] border border-white/5 bg-white/[0.02] p-6 backdrop-blur-2xl sm:p-7 lg:p-8"
+                {...animationProps}
+              >
+                <div className="relative space-y-5">
+                  <p className="text-xs uppercase tracking-[0.45em] text-cyan-200/70">
+                    {deck.subtitle}
+                  </p>
                 <h2 className="text-3xl font-semibold sm:text-4xl">
                   {deck.name}
                 </h2>
@@ -230,15 +277,16 @@ const Projects = () => {
               </div>
               <div className="relative">
                 <div
-                  className="absolute -inset-3 rounded-[34px] border border-cyan-300/15 bg-gradient-to-br from-white/[0.04] via-cyan-500/5 to-transparent shadow-[0_60px_100px_-60px_rgba(14,165,233,0.55)] blur-2xl"
+                  className="absolute -inset-3 rounded-[30px] border border-cyan-300/15 bg-gradient-to-br from-white/[0.04] via-cyan-500/5 to-transparent shadow-[0_60px_100px_-60px_rgba(14,165,233,0.55)] blur-2xl"
                   aria-hidden="true"
                 />
-                <div className="relative rounded-[28px] border border-white/5 bg-white/[0.02] p-4 backdrop-blur-xl">
+                <div className="relative rounded-[24px] border border-white/5 bg-white/[0.02] p-3 backdrop-blur-xl sm:p-4">
                   <SwipeDeck cards={deck.cards} />
                 </div>
               </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>

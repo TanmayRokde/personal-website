@@ -211,12 +211,12 @@ const heroMonogramVariants = {
   },
 }
 
-const chipLabels = ['DevOps & Cloud', 'Rust & Web3', 'Problem Solver']
+const chipLabels = ['DevOps & Cloud', 'Rust & Web3', 'Backend Developer']
 
 const focusHighlights = [
   {
     title: 'Focus',
-    body: 'End-to-end product delivery—cloud, API, and immersive front-end experiences.',
+    body: 'End-to-end product delivery—cloud, APIs, and scalable back-end development.',
   },
   {
     title: 'Mindset',
@@ -224,7 +224,7 @@ const focusHighlights = [
   },
   {
     title: 'Availability',
-    body: 'Open to remote roles & partnerships on impactful products.',
+    body: 'Open to relocate & partnerships on impactful products.',
   },
 ]
 
@@ -368,24 +368,24 @@ const Hero = () => {
               {displayName}
             </span>
           </motion.p>
-          <motion.h1
-            id="hero-heading"
-            className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
+          <motion.p
+            className="mt-6 hidden text-lg text-white/70 sm:block"
             variants={heroChildVariants}
             custom={1}
-          >
-            Designing resilient cloud-native systems
-          </motion.h1>
-          <motion.p
-            className="mt-6 text-lg text-white/70"
-            variants={heroChildVariants}
-            custom={2}
           >
             Backend &amp; DevOps engineer who loves solving problems from
             scratch. I blend a front-end sensibility with infrastructure rigor,
             automating deployments, shaping intuitive interfaces, and exploring
             blockchain ecosystems with Rust-powered smart contracts.
           </motion.p>
+          <motion.h1
+            id="hero-heading"
+            className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
+            variants={heroChildVariants}
+            custom={2}
+          >
+            Designing resilient cloud-native systems
+          </motion.h1>
           <motion.div
             className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-200/80 lg:justify-start"
             variants={heroChildVariants}
@@ -403,7 +403,7 @@ const Hero = () => {
             ))}
           </motion.div>
           <motion.div
-            className="mt-12 grid gap-3 text-sm text-white/60 sm:grid-cols-3"
+            className="mt-10 hidden gap-3 text-sm text-white/60 lg:grid lg:grid-cols-3"
             variants={heroChildVariants}
             custom={4}
           >
@@ -422,6 +422,14 @@ const Hero = () => {
             ))}
           </motion.div>
           <motion.div
+            className="mt-12 flex w-full justify-center lg:hidden"
+            variants={heroMonogramVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <TrMonogram className="max-w-xs sm:max-w-sm" />
+          </motion.div>
+          <motion.div
             className="mt-8 rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-5 text-white/70 backdrop-blur"
             variants={heroChildVariants}
             custom={8}
@@ -436,7 +444,7 @@ const Hero = () => {
           </motion.div>
         </motion.div>
         <motion.div
-          className="flex flex-1 items-center justify-center"
+          className="hidden items-center justify-center lg:flex lg:flex-1"
           variants={heroMonogramVariants}
           initial="hidden"
           animate="visible"
