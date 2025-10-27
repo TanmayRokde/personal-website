@@ -7,6 +7,7 @@ import BrandSpark from "./BrandSpark";
 const navItems = [
   { label: "Home", to: "/" },
   { label: "Tech Stack", to: "/tech-stack" },
+  { label: "Work Experience", to: "/experience" },
   { label: "Projects", to: "/projects" },
   { label: "Contact", to: "/contact" },
 ];
@@ -27,8 +28,8 @@ const Navbar = () => {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-[60] flex justify-center px-3 py-1 sm:px-6 sm:py-4">
-      <nav className="flex w-full max-w-6xl items-center justify-between gap-4 rounded-full border border-transparent bg-transparent px-4 py-2 shadow-none sm:border-white/10 sm:bg-gray-950/85 sm:shadow-[0_20px_45px_-25px_rgba(15,23,42,0.75)] sm:backdrop-blur">
+    <header className="sticky top-0 z-[60] flex justify-center px-3 py-2 sm:px-6 sm:py-6">
+      <nav className="flex w-full max-w-6xl items-center justify-between gap-4 rounded-full border border-white/10 bg-gray-950/40 px-4 py-2 shadow-none backdrop-blur">
         <NavLink to="/" className="transition hover:opacity-90">
           <BrandSpark />
         </NavLink>

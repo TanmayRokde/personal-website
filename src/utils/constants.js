@@ -1,4 +1,4 @@
-import { ruha_logo, spotcare_logo } from '../assets';
+import {  } from '../assets';
 import classync from '../assets/projects/classync.jpg';
 import mood from '../assets/projects/mood.jpg';
 import tastytap from '../assets/projects/tastytap.jpg';
@@ -200,25 +200,48 @@ export const skills = [
 
 export const experiences = [
   {
-    title: 'Full Stack Developer Intern',
-    icon: ruha_logo,
-    company_name: 'Ruha',
-    date: 'Jul 2024 - Sept 2024',
+    title: "Backend and DevOps Engineer",
+    icon: null,
+    company_name: "Rydeu.com",
+    date: "Nov 2024 – Present",
     points: [
-      'Contributed to secure admin panels for creating and managing vCard, collaborating with designers and fellow developers.',
-      'Built responsive, user-friendly interfaces and integrated APIs for enhanced functionality.',
-      'Developed responsive, user-friendly web designs enhancing user experience.',
+      "Engineered scalable microservices using Node.js, TypeScript, and PostgreSQL to support supplier, customer, and admin panels.",
+      "Implemented CI/CD pipelines and cron jobs to streamline deployments and automate recurring backend processes.",
+      "Managed AWS infrastructure (SES, EC2, S3) and improved reliability of transactional email services.",
     ],
   },
   {
-    title: 'Software Developer Intern',
-    icon: spotcare_logo,
-    company_name: 'Natural Minds Digital',
-    date: 'Dec 2024 - Present',
+    title: "Backend Engineer",
+    icon: null,
+    company_name: "Sapphire",
+    date: "Apr 2024 – Aug 2024",
     points: [
-      'Developed an admin panel for monitoring domain expiry, AWS metrics, and system management.',
-      'Utilized Node.js, React, Express, MySQL, and Angular for development.',
-      'Worked on a doctor’s web app to streamline management and enable virtual consultations.',
+      "Developed and maintained backend systems supporting user analytics, reports, and product data pipelines.",
+      "Built RESTful and event-driven microservices using Node.js, Express, and PostgreSQL for seamless data processing.",
+      "Optimized database schemas and query performance, reducing response time by 35% across core modules.",
+      "Collaborated with frontend and DevOps teams to ensure smooth deployment and monitoring across environments.",
+    ],
+  },
+  {
+    title: "Software Developer Intern",
+    icon: null,
+    company_name: "degenFund",
+    date: "Aug 2024 – Nov 2024",
+    points: [
+      "Developed real-time backend services using Node.js and WebSockets to monitor blockchain events and DeFi token analytics.",
+      "Built RESTful APIs and socket layers for frontend dashboards to deliver live token metrics and price updates.",
+      "Integrated Web3.js with smart contracts for on-chain data fetching including token prices, transfers, and liquidity pools.",
+    ],
+  },
+  {
+    title: "Software Developer Intern",
+    icon: null,
+    company_name: "Spotflock",
+    date: "Jul 2022 – Nov 2022",
+    points: [
+      "Developed and maintained Django admin dashboards to manage analytics and user control interfaces.",
+      "Integrated frontend templates with backend views ensuring secure API handling and robust user data management.",
+      "Optimized PostgreSQL queries via Django ORM to reduce response time and improve system performance.",
     ],
   },
 ];

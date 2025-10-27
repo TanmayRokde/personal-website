@@ -57,9 +57,9 @@ const digitalCards = [
   {
     id: "github",
     heading: "GitHub",
-    handle: "github.com/tanmay.json",
+    handle: "github.com/TanmayRokde",
     hint: "DevOps-heavy repos & experiments",
-    link: "https://github.com/tanmay.json",
+    link: "https://github.com/TanmayRokde",
     accent: "from-slate-200/95 to-slate-700/80",
     rotate: "10deg",
     top: "28%",
@@ -102,9 +102,9 @@ const digitalCards = [
 
 const Contacts = () => {
   return (
-    <section className="relative overflow-hidden bg-gray-950 pb-28 pt-32 text-white">
+    <section className="relative overflow-hidden pb-28 pt-32 text-white">
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-cyan-500/10 via-gray-950 to-gray-950"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-gray-950/45 to-gray-950/85"
         aria-hidden="true"
       />
 
