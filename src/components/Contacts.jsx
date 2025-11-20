@@ -26,7 +26,7 @@ const socials = [
   },
   {
     label: "GitHub",
-    href: "https://github.com/tanmay.json",
+    href: "https://github.com/TanmayRokde",
     icon: <FaGithub />,
   },
 ];
